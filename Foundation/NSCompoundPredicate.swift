@@ -19,14 +19,42 @@ public enum NSCompoundPredicateType : UInt {
 
 public class NSCompoundPredicate : NSPredicate {
     
-    public init(type: NSCompoundPredicateType, subpredicates: [NSPredicate]) { NSUnimplemented() }
+    public init(type: NSCompoundPredicateType, subpredicates: [NSPredicate]) {
+        if type == .NotPredicateType && subpredicates.count == 0 {
+            preconditionFailure("Unsupported predicate count of \(subpredicates.count) for NSCompoundPredicateType.NotPredicateType")
+        }
+        self.compoundPredicateType = type
+        self.subpredicates = subpredicates
+        super.init(block: { _ -> Bool in
+            return false // will never be run in NSCompoundPredicate. replacing this with fatalError/preconditionFailure causes a false compiler error.
+        })
+    }
     public required init?(coder: NSCoder) { NSUnimplemented() }
     
-    public var compoundPredicateType: NSCompoundPredicateType { NSUnimplemented() }
-    public var subpredicates: [AnyObject] { NSUnimplemented() }
-    
+    public let compoundPredicateType: NSCompoundPredicateType
+    public let subpredicates: [AnyObject]
+
     /*** Convenience Methods ***/
-    public init(andPredicateWithSubpredicates subpredicates: [NSPredicate]) { NSUnimplemented() }
-    public init(orPredicateWithSubpredicates subpredicates: [NSPredicate]) { NSUnimplemented() }
-    public init(notPredicateWithSubpredicate predicate: NSPredicate) { NSUnimplemented() }
+    public convenience init(andPredicateWithSubpredicates subpredicates: [NSPredicate]) {
+        self.init(type: .AndPredicateType, subpredicates: subpredicates)
+    }
+    public convenience init(orPredicateWithSubpredicates subpredicates: [NSPredicate]) {
+        self.init(type: .OrPredicateType, subpredicates: subpredicates)
+    }
+    public convenience init(notPredicateWithSubpredicate predicate: NSPredicate) {
+        self.init(type: .NotPredicateType, subpredicates: [predicate])
+    }
+
+    override public func evaluateWithObject(object: AnyObject?, substitutionVariables bindings: [String : AnyObject]?) -> Bool {
+        let predicates = self.subpredicates as! [NSPredicate]
+
+        switch compoundPredicateType {
+        case .AndPredicateType:
+            return predicates.reduce(true, combine: { $0 && $1.evaluateWithObject(object, substitutionVariables: bindings) })
+        case .OrPredicateType:
+            return predicates.reduce(false, combine: { $0 || $1.evaluateWithObject(object, substitutionVariables: bindings) })
+        case .NotPredicateType:
+            return !(predicates[0].evaluateWithObject(object, substitutionVariables: bindings))
+        }
+    }
 }

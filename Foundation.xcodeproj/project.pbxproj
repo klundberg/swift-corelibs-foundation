@@ -201,6 +201,8 @@
 		5BF7AEC11BCD51F9008F214A /* NSValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDC3F4C1BCC5DCB00ED97BB /* NSValue.swift */; };
 		61F8AE7D1C180FC600FB62F0 /* TestNSNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F8AE7C1C180FC600FB62F0 /* TestNSNotificationCenter.swift */; };
 		6E203B8D1C1303BB003B2576 /* TestNSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E203B8C1C1303BB003B2576 /* TestNSBundle.swift */; };
+		7913C84C1C1A827000C7F4CC /* TestNSPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7913C84B1C1A827000C7F4CC /* TestNSPredicate.swift */; };
+		7913C84E1C1A8FF800C7F4CC /* TestNSCompoundPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7913C84D1C1A8FF800C7F4CC /* TestNSCompoundPredicate.swift */; };
 		7A7D6FBB1C16439400957E2E /* TestNSURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D6FBA1C16439400957E2E /* TestNSURLResponse.swift */; };
 		83712C8E1C1684900049AD49 /* TestNSURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83712C8D1C1684900049AD49 /* TestNSURLRequest.swift */; };
 		844DC3331C17584F005611F9 /* TestNSScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DC3321C17584F005611F9 /* TestNSScanner.swift */; };
@@ -230,7 +232,6 @@
 		EADE0B4E1BD09E0800C49C64 /* NSAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE0B4D1BD09E0800C49C64 /* NSAffineTransform.swift */; };
 		EADE0B501BD09E3100C49C64 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE0B4F1BD09E3100C49C64 /* NSAttributedString.swift */; };
 		EADE0B521BD09F2F00C49C64 /* NSByteCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE0B511BD09F2F00C49C64 /* NSByteCountFormatter.swift */; };
-		EADE0B911BD15DFF00C49C64 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EADE0B531BD15DFF00C49C64 /* Info.plist */; };
 		EADE0B921BD15DFF00C49C64 /* NSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE0B541BD15DFF00C49C64 /* NSCache.swift */; };
 		EADE0B931BD15DFF00C49C64 /* NSComparisonPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE0B551BD15DFF00C49C64 /* NSComparisonPredicate.swift */; };
 		EADE0B941BD15DFF00C49C64 /* NSCompoundPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE0B561BD15DFF00C49C64 /* NSCompoundPredicate.swift */; };
@@ -540,6 +541,8 @@
 		5EB6A15C1C188FC40037DCB8 /* TestNSJSONSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNSJSONSerialization.swift; sourceTree = "<group>"; };
 		61F8AE7C1C180FC600FB62F0 /* TestNSNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNSNotificationCenter.swift; sourceTree = "<group>"; };
 		6E203B8C1C1303BB003B2576 /* TestNSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNSBundle.swift; sourceTree = "<group>"; };
+		7913C84B1C1A827000C7F4CC /* TestNSPredicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNSPredicate.swift; sourceTree = "<group>"; };
+		7913C84D1C1A8FF800C7F4CC /* TestNSCompoundPredicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNSCompoundPredicate.swift; sourceTree = "<group>"; };
 		7A7D6FBA1C16439400957E2E /* TestNSURLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNSURLResponse.swift; sourceTree = "<group>"; };
 		83712C8D1C1684900049AD49 /* TestNSURLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNSURLRequest.swift; sourceTree = "<group>"; };
 		844DC3321C17584F005611F9 /* TestNSScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestNSScanner.swift; sourceTree = "<group>"; };
@@ -1071,6 +1074,8 @@
 				83712C8D1C1684900049AD49 /* TestNSURLRequest.swift */,
 				7A7D6FBA1C16439400957E2E /* TestNSURLResponse.swift */,
 				A5A34B551C18C85D00FD972B /* TestNSByteCountFormatter.swift */,
+				7913C84B1C1A827000C7F4CC /* TestNSPredicate.swift */,
+				7913C84D1C1A8FF800C7F4CC /* TestNSCompoundPredicate.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -1523,7 +1528,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Apple;
 				TargetAttributes = {
 					5B5D885C1BBC938800234F36 = {
@@ -1565,7 +1570,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EADE0B911BD15DFF00C49C64 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1762,9 +1766,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7913C84E1C1A8FF800C7F4CC /* TestNSCompoundPredicate.swift in Sources */,
 				400E22651C1A4E58007C5933 /* TestNSProcessInfo.swift in Sources */,
 				525AECED1BF2C9C500D15BB0 /* TestNSFileManager.swift in Sources */,
 				5B915F0F1C1A320E00BE40C5 /* TestNSJSONSerialization.swift in Sources */,
+				7913C84C1C1A827000C7F4CC /* TestNSPredicate.swift in Sources */,
 				EA66F6501BF1619600136161 /* TestNSNumber.swift in Sources */,
 				844DC3331C17584F005611F9 /* TestNSScanner.swift in Sources */,
 				E876A73E1C1180E000F279EC /* TestNSRange.swift in Sources */,
@@ -2040,6 +2046,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREFIX_HEADER = CoreFoundation/Base.subproj/CoreFoundation_Prefix.h;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -2073,6 +2080,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREFIX_HEADER = CoreFoundation/Base.subproj/CoreFoundation_Prefix.h;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
