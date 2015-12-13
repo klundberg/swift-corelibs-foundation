@@ -21,13 +21,11 @@ public class NSCompoundPredicate : NSPredicate {
     
     public init(type: NSCompoundPredicateType, subpredicates: [NSPredicate]) {
         if type == .NotPredicateType && subpredicates.count == 0 {
-            preconditionFailure("Unsupported predicate count of \(subpredicates.count) for NSCompoundPredicateType.NotPredicateType")
+            preconditionFailure("Unsupported predicate count of \(subpredicates.count) for \(type)")
         }
         self.compoundPredicateType = type
         self.subpredicates = subpredicates
-        super.init(block: { _ -> Bool in
-            return false // will never be run in NSCompoundPredicate. replacing this with fatalError/preconditionFailure causes a false compiler error.
-        })
+        super.init(value: false)
     }
     public required init?(coder: NSCoder) { NSUnimplemented() }
     

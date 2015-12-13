@@ -11,7 +11,15 @@
 // Predicates wrap some combination of expressions and operators and when evaluated return a BOOL.
 
 public class NSPredicate : NSObject, NSSecureCoding, NSCopying {
-    
+
+    // represents the different subtypes of predicates we can create, without needing to store data for each one in separate ivars.
+    private enum PredicateKind {
+        case Boolean(Bool)
+        case Block((AnyObject, [String : AnyObject]?) -> Bool)
+    }
+
+    private let kind: PredicateKind
+
     public static func supportsSecureCoding() -> Bool {
         return true
     }
@@ -33,14 +41,13 @@ public class NSPredicate : NSObject, NSSecureCoding, NSCopying {
     
     public init?(fromMetadataQueryString queryString: String) { NSUnimplemented() }
     
-    public convenience init(value: Bool) {
-        self.init(block: { _ in return value })
+    public init(value: Bool) {
+        kind = .Boolean(value)
+        super.init()
     } // return predicates that always evaluate to true/false
 
-    private let block: ((AnyObject, [String : AnyObject]?) -> Bool)?
-
     public init(block: (AnyObject, [String : AnyObject]?) -> Bool) {
-        self.block = block
+        kind = .Block(block)
         super.init()
     }
     
@@ -57,10 +64,15 @@ public class NSPredicate : NSObject, NSSecureCoding, NSCopying {
             NSUnimplemented()
         }
 
-        if let block = block, object = object {
-            return block(object, bindings)
-        } else {
-            NSUnimplemented()
+        switch kind {
+        case let .Boolean(value):
+            return value
+        case let .Block(block):
+            if let object = object {
+                return block(object, bindings)
+            } else {
+                return false
+            }
         }
     } // single pass evaluation substituting variables from the bindings dictionary for any variable expressions encountered
     
